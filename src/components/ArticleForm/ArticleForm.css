@@ -1,0 +1,11 @@
+#form-text{
+    background-color: white;
+    color: black;
+    margin-right: 10px;
+    border: none;
+}
+
+.required-mark{
+    color: red;
+    vertical-align: super;
+}
