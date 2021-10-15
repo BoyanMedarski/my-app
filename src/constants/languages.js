@@ -1,2 +1,2 @@
-const languages = ["English", "German", "Bulgarian"];
+const languages = ["english", "german", "bulgarian"];
 export default languages;

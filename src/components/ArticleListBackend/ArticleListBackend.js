@@ -14,7 +14,7 @@ const ArticleListBackend = ({ match }) => {
         var articles = JSON.parse(localStorage.getItem(locale));
         setArticles(articles);
         setLocale(locale);
-    }, []);
+    }, [match.params.locale]);
 
     const onAddClick = () => {
         history.push(`/admin/${match.params.locale}/articles/edit/`);
