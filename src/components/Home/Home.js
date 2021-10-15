@@ -3,21 +3,13 @@ import { Button, Container, Row, Col } from 'react-bootstrap';
 import address from '../../constants/routes';
 
 const Home = () => {
-
-    //const [data, setData] = useState({});
-
-    // useEffect(() => {
-    //     fetch(address)
-    //         .then(response => {
-    //             response.json().then(data => {
-    //                 console.log(data)
-    //             })
-    //         })
-
-    // }, []);
+    useEffect(() => {
+        var retrievedObject = JSON.parse(localStorage.getItem('bulgarian articles'));
+    }, []);
 
     return <div>
         <Container>
+            home page
         </Container>
     </div>
 };

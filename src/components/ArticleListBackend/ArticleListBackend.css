@@ -1,0 +1,15 @@
+.add-article{
+    text-align: right;
+}
+
+.add-article button{
+    border: none;
+    background-color: white;
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+.article-list-button{
+    padding: 5px;
+    margin: 0 2px;
+}
