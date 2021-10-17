@@ -4,7 +4,7 @@ import { Editor, OriginalTools } from 'react-bootstrap-editor';
 import "./ArticleForm.css";
 import locale from '../../constants/locale';
 
-const ArticleForm = ({ language, article }) => {
+const ArticleForm = ({ language, article, onArticleSubmit }) => {
 
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
@@ -39,8 +39,8 @@ const ArticleForm = ({ language, article }) => {
 
     const handleSubmitChange = e => {
         e.preventDefault();
-        let id = article ? article.id : "";
-        console.log({ id: id, title: title, content: content, date: date, isActive: !!isActive });
+        let id = article ? article.id : null;
+        onArticleSubmit({ id: id, title: title, content: content, date: date, isActive: !!isActive });
     };
 
     return (<>

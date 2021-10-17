@@ -17,7 +17,7 @@ const ArticleListBackend = ({ match }) => {
     }, [match.params.locale]);
 
     const onAddClick = () => {
-        history.push(`/admin/${match.params.locale}/articles/edit/`);
+        history.push(`/admin/${match.params.locale}/articles/add/`);
     };
 
     const onEditClick = id => {
