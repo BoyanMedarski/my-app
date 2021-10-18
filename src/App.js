@@ -13,9 +13,7 @@ import './App.css';
 
 function App() {
   useEffect(() => {
-    localStorage.setItem("english articles", JSON.stringify(articles.english));
-    localStorage.setItem("german articles", JSON.stringify(articles.german));
-    localStorage.setItem("bulgarian articles", JSON.stringify(articles.bulgarian));
+    localStorage.setItem("articles", JSON.stringify(articles));
   }, []);
   return (
     <div className="App">

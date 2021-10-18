@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
-const ArticleListBackendRow = ({ article, onEditClick, onDeleteClick }) => {
+const ArticleListBackendRow = ({ article, locale, onEditClick, onDeleteClick }) => {
     const [show, setShow] = useState(false);
 
     const handleClose = () => {
@@ -16,7 +16,7 @@ const ArticleListBackendRow = ({ article, onEditClick, onDeleteClick }) => {
     return <>
         <tr>
             <td>{article.date}</td>
-            <td>{article.title}</td>
+            <td>{article.title[locale]}</td>
             <td>
                 <Button variant="warning" className="article-list-button" onClick={() => onEditClick(article.id)} size="sm">Edit</Button>
                 <Button variant="danger" className="article-list-button" onClick={() => setShow(true)} size="sm">Delete</Button>

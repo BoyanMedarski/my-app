@@ -13,9 +13,10 @@ const ArticleForm = ({ language, article, onArticleSubmit }) => {
     const [isActive, setIsActive] = useState("");
 
     useEffect(() => {
+        console.log(article)
         if (article) {
-            setTitle(article.title);
-            setContent(article.content);
+            setTitle(article.title[language]);
+            setContent(article.content[language]);
             setDate(article.date);
             setIsActive(article.isActive);
         }

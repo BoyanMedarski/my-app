@@ -13,14 +13,12 @@ const EditArticle = ({ match }) => {
 
     useEffect(() => {
         setKey(match.params.locale);
-        let locale = `${match.params.locale} articles`;
-        var article = JSON.parse(localStorage.getItem(locale)).find(ar => ar.id === match.params.id);
+        var article = JSON.parse(localStorage.getItem("articles")).find(ar => ar.id === match.params.id);
         setArticle(article);
     }, [match.params.locale, match.params.id]);
 
     const onArticleSubmit = article => {
-        let currentArticlesLocale = `${match.params.locale} articles`;
-        let articles = JSON.parse(localStorage.getItem(currentArticlesLocale));
+        let articles = JSON.parse(localStorage.getItem("articles"));
         let newId = generateId();
 
         if (article.id) {
@@ -32,7 +30,7 @@ const EditArticle = ({ match }) => {
             articles.push({ ...article, id: newId });
         }
         
-        localStorage.setItem(currentArticlesLocale, JSON.stringify(articles));
+        localStorage.setItem("articles", JSON.stringify(articles));
         history.push(`/admin/${key}/articles/`);
     };
 
@@ -49,7 +47,6 @@ const EditArticle = ({ match }) => {
                         eventKey={lang}
                         title={capitilize(lang)}
                         key={lang}
-                        disabled={match.params.locale === lang ? false : true}
                     >
                         <ArticleForm language={lang} article={article} onArticleSubmit={onArticleSubmit} />
                     </Tab>

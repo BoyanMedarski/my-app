@@ -10,23 +10,22 @@ const ArticleListBackend = ({ match }) => {
     const history = useHistory();
 
     useEffect(() => {
-        let locale = `${match.params.locale} articles`;
-        var articles = JSON.parse(localStorage.getItem(locale));
+        var articles = JSON.parse(localStorage.getItem("articles"));
         setArticles(articles);
-        setLocale(locale);
+        setLocale(match.params.locale);
     }, [match.params.locale]);
 
     const onAddClick = () => {
-        history.push(`/admin/${match.params.locale}/articles/add/`);
+        history.push(`/admin/${locale}/articles/add/`);
     };
 
     const onEditClick = id => {
-        history.push(`/admin/${match.params.locale}/articles/edit/${id}`);
+        history.push(`/admin/${locale}/articles/edit/${id}`);
     };
 
     const onDeleteClick = id => {
         let updatedArticles = articles.filter(ar => ar.id !== id);
-        localStorage.setItem(locale, JSON.stringify(updatedArticles));
+        localStorage.setItem("articles", JSON.stringify(updatedArticles));
         setArticles(updatedArticles);
     };
 
@@ -41,7 +40,7 @@ const ArticleListBackend = ({ match }) => {
                 </tr>
             </thead>
             <tbody>
-                {articles.map(article => <ArticleListBackendRow article={article} onEditClick={onEditClick} onDeleteClick={onDeleteClick} key={article.id} />)}
+                {articles.map(article => <ArticleListBackendRow article={article} locale={locale} onEditClick={onEditClick} onDeleteClick={onDeleteClick} key={article.id} />)}
             </tbody>
         </Table>
     </section>
