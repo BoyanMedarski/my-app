@@ -6,6 +6,7 @@ import locale from '../../constants/locale';
 
 const ArticleForm = ({ language, article, onArticleSubmit }) => {
 
+    const [showRequiredText, SetRеquiredText] = useState(false)
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [date, setDate] = useState("");
@@ -40,7 +41,12 @@ const ArticleForm = ({ language, article, onArticleSubmit }) => {
     const handleSubmitChange = e => {
         e.preventDefault();
         let id = article ? article.id : null;
-        onArticleSubmit({ id: id, title: title, content: content, date: date, isActive: !!isActive });
+        if (title === "" || content === "" || date === "") {
+            SetRеquiredText(true);
+        }
+        else {
+            onArticleSubmit({ id: id, title: title, content: content, date: date, isActive: !!isActive });
+        }
     };
 
     return (<>
@@ -74,7 +80,7 @@ const ArticleForm = ({ language, article, onArticleSubmit }) => {
                     <Form.Check label="Is Active" name="isActive" value={isActive} checked={!!isActive} onChange={handleIsActiveChange} />
                 </Col>
             </Form.Group>
-
+            <p className={showRequiredText ? "required-text" : "hidden"}>All required fields must be filled</p>
             <Form.Group as={Row} className="mb-3 align-left">
                 <Col sm={{ span: 10, offset: 2 }}>
                     <Button type="submit">Submit</Button>

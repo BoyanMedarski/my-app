@@ -13,3 +13,12 @@
 .align-left{
     text-align: left;
 }
+
+.required-text{
+    color: red;
+    display: block;
+}
+
+.hidden{
+    display: none;
+}

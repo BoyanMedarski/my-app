@@ -23,16 +23,15 @@ const EditArticle = ({ match }) => {
         let articles = JSON.parse(localStorage.getItem(currentArticlesLocale));
         let newId = generateId();
 
-        let updatedArticles = []
-
-
-        console.log(articles);
-        article.id
-            ? console.log("edit")
-            : articles.push({ ...article, id: newId })
-
-        console.log(currentArticlesLocale)
-        console.log(articles)
+        if (article.id) {
+            let filteredArticles = articles.filter(ar => ar.id !== article.id);
+            filteredArticles.push(article);
+            articles = filteredArticles;
+        }
+        else {
+            articles.push({ ...article, id: newId });
+        }
+        
         localStorage.setItem(currentArticlesLocale, JSON.stringify(articles));
         history.push(`/admin/${key}/articles/`);
     };
