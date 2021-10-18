@@ -1,0 +1,21 @@
+.list-group .list-group-item{
+    border: none;
+    border-bottom: 1px solid gray;
+    padding: 15px 0;
+}
+
+.list-item {
+    text-align: left;
+    border-bottom: 1px solid gray;
+    cursor: pointer;
+}
+
+.article-title {
+    font-size: 25px;
+    color:skyblue;
+}
+
+.article-date{
+    font-size: 12px;
+    color: gray;
+}

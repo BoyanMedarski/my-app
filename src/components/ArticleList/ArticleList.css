@@ -1,0 +1,12 @@
+.articles-header{
+    font-size: 32px;
+}
+.btn-check:focus+.btn, .btn:focus{
+    -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+.language-bar{
+    text-align: right;
+}

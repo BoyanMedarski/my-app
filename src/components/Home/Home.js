@@ -1,13 +1,17 @@
+import React, { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const Home = () => {
-    return <div>
-        <Container>
-            home page
-            <Link to="/admin/english/articles" >English articles</Link>
-        </Container>
-    </div>
+    const history = useHistory();
+
+    useEffect(() => {
+        history.push('/english/articles')
+    }, [])
+
+    return <Container>
+        home page
+    </Container>
 };
 
 export default Home;
