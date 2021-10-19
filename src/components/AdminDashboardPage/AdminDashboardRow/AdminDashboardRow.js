@@ -22,18 +22,19 @@ const AdminDashboardRow = ({ article, locale, onEditClick, onDeleteClick }) => {
                 <Button variant="danger" className="article-list-button" onClick={() => setShow(true)} size="sm">Delete</Button>
             </td>
         </tr>
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={show} onHide={handleClose} >
             <Modal.Header closeButton>
                 <Modal.Title>Delete article</Modal.Title>
             </Modal.Header>
-            <Modal.Body>Are you sure you want to delete this article</Modal.Body>
+            <Modal.Body>Are you sure you want to delete record: {article.title[locale]}</Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                    Close
-                </Button>
                 <Button variant="danger" onClick={handleDelete}>
-                    Delete
+                    Yes
                 </Button>
+                <Button variant="secondary" onClick={handleClose}>
+                    No
+                </Button>
+
             </Modal.Footer>
         </Modal>
     </>
