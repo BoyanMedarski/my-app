@@ -20,7 +20,7 @@ const ArticleForm = ({ language, article, onArticleSubmit }) => {
             setIsActive(article.isActive);
         }
 
-    }, [article]);
+    }, [article, language]);
 
     const handleContentChange = e => {
         setContent(e);
@@ -60,7 +60,7 @@ const ArticleForm = ({ language, article, onArticleSubmit }) => {
                 updatedContent = { english: "", german: "", bulgarian: "" }
                 updatedTitle[language] = title;
                 updatedContent[language] = content;
-                editedArticle = { id: id, title: updatedTitle, content: updatedContent, date: date, isActive: !!isActive, slug: "article" + id };
+                editedArticle = { id: id, title: updatedTitle, content: updatedContent, date: date, isActive: !!isActive, isDeleted: false, slug: "article" + id };
             }
             onArticleSubmit(editedArticle);
         }

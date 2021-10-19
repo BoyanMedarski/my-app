@@ -6,14 +6,17 @@ import capitilize from '../../helpers/CapitalizeFirstLetter';
 import languages from './../../constants/languages';
 import './ArticleList.css';
 
-const ArticleList = ({ match }) => {
-    const [articles, setArticles] = useState([]);
+const ArticleList = ({ match, articles }) => {
+    const [articlesList, setArticles] = useState(articles);
     const [locale, setLocale] = useState("");
     const history = useHistory();
 
     useEffect(() => {
-        let articles = JSON.parse(localStorage.getItem("articles")).filter(ar => !ar.isDeleted && ar.isActive);
-        setArticles(articles);
+        const articles = JSON.parse(localStorage.getItem('articles'));
+        if (articles) {
+            setArticles(articles);
+        }
+        
         setLocale(match.params.locale);
     }, [match.params.locale]);
 
@@ -44,8 +47,10 @@ const ArticleList = ({ match }) => {
             </div>
             <div className="articles-header">Articles listing</div>
             <ListGroup>
-                {articles.map(ar => <ArticleListRow article={ar} key={ar.id} onArticleClick={onArticleClick} locale={locale} />)}
-            </ListGroup>
+                {articlesList
+                    ? articlesList.filter(ar => !ar.isDeleted && ar.isActive).map(ar => <ArticleListRow article={ar}  locale={match.params.locale} onArticleClick={onArticleClick} key={ar.id}/>)
+                    : ""
+                }</ListGroup>
         </>
     )
 };

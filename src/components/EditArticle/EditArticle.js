@@ -27,9 +27,9 @@ const EditArticle = ({ match }) => {
             articles = filteredArticles;
         }
         else {
-            articles.push({ ...article, id: newId });
+            articles.push({ ...article, id: newId, slug: "article-" + newId });
         }
-        
+
         localStorage.setItem("articles", JSON.stringify(articles));
         history.push(`/admin/${key}/articles/`);
     };

@@ -7,7 +7,7 @@ const Home = () => {
 
     useEffect(() => {
         history.push('/english/articles')
-    }, [])
+    }, [history])
 
     return <Container>
         home page

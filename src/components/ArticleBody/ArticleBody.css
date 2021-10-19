@@ -1,0 +1,103 @@
+.article-title{
+    font-size: 24px;
+}
+
+.article-content{
+    font-size: 16px;
+    text-align: justify;
+}
+
+.strike-line{
+    float: left;
+    width: 80%;
+    text-decoration: line-through;
+}
+
+.article-date{
+    font-size: 16px;
+    text-align: left;
+    color: gray;
+}
+
+.back-row{
+    width: 100%;
+    text-align: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.back-arrow{
+    color:lightblue;
+    margin: 0 5px;
+}
+
+.back-link{
+    color:lightblue;
+    text-decoration: none;
+}
+
+.navigation{
+    color:lightblue;
+    text-align: left;
+    clear: left;
+}
+
+.navigation-link{
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.no-select {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+.rotate{
+    transform: rotate(180deg);
+    display: inline-block;
+}
+/* hr {
+    width: 80%;
+    height: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color:#666;
+    border: 0 none;
+    margin-top: 100px;
+    margin-bottom:100px;
+} */
+
+.line-header {
+    display: inline-block;
+    margin-top: 15px;
+    position:relative;
+    width: 85%;
+}
+.line-header:before {
+    position: absolute;
+    display:block;
+    top:0;
+    left:0;
+    bottom:0;
+    content: attr(title);
+    background-color:#666;
+    color:#666;
+    z-index:-1;
+    padding-right:.5em;
+}
+.line-header::after {
+    position:absolute;
+    content:'';
+    display: block;
+    left:0;
+    right:0;
+    top:50%;
+    background-color:#666;;
+    height:1px;
+    z-index:-2;
+}
