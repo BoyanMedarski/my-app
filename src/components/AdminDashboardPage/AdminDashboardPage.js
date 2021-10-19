@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Table } from 'react-bootstrap';
-import ArticleListBackendRow from '../ArticleListBackendRow/ArticleListBackendRow';
-import './ArticleListBackend.css';
+import AdminDashboardRow from './AdminDashboardRow/AdminDashboardRow';
+import './AdminDashboardPage.css';
 
-const ArticleListBackend = ({ match, articles }) => {
+const AdminDashboardPage = ({ match, articles }) => {
     const [articlesList, setArticles] = useState(articles);
     const [locale, setLocale] = useState("");
     const history = useHistory();
@@ -46,7 +46,7 @@ const ArticleListBackend = ({ match, articles }) => {
             </thead>
             <tbody>
                 {articlesList
-                    ? articlesList.filter(ar => !ar.isDeleted).map(article => <ArticleListBackendRow article={article} locale={locale} onEditClick={onEditClick} onDeleteClick={onDeleteClick} key={article.id} />)
+                    ? articlesList.filter(ar => !ar.isDeleted).map(article => <AdminDashboardRow article={article} locale={locale} onEditClick={onEditClick} onDeleteClick={onDeleteClick} key={article.id} />)
                     : ""
                 }
             </tbody>
@@ -54,4 +54,4 @@ const ArticleListBackend = ({ match, articles }) => {
     </section>
 };
 
-export default ArticleListBackend;
+export default AdminDashboardPage;

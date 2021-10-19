@@ -1,5 +1,5 @@
 import { ListGroup } from 'react-bootstrap';
-import dateFormater from '../../helpers/DateFormater';
+import dateFormater from '../../../helpers/DateFormater';
 import './ArticleListRow.css';
 
 const ArticleListRow = ({ article, locale, onArticleClick }) => {

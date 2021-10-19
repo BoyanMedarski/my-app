@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
-const ArticleListBackendRow = ({ article, locale, onEditClick, onDeleteClick }) => {
+const AdminDashboardRow = ({ article, locale, onEditClick, onDeleteClick }) => {
     const [show, setShow] = useState(false);
 
     const handleClose = () => {
@@ -39,4 +39,4 @@ const ArticleListBackendRow = ({ article, locale, onEditClick, onDeleteClick }) 
     </>
 };
 
-export default ArticleListBackendRow;
+export default AdminDashboardRow;

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 
-const Home = () => {
+const HomePage = () => {
     const history = useHistory();
 
     useEffect(() => {
@@ -14,4 +14,4 @@ const Home = () => {
     </Container>
 };
 
-export default Home;
+export default HomePage;

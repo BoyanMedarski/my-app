@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Dropdown, ButtonGroup, DropdownButton } from 'react-bootstrap';
-import ArticleBody from '../ArticleBody/ArticleBody';
+import ArticleBody from './ArticleBody/ArticleBody';
 import capitilize from '../../helpers/CapitalizeFirstLetter';
-import languages from './../../constants/languages';
-import getNextId from './../../helpers/GetNextId';
-import getPreviousId from './../../helpers/GetPreviousId';
-import './ArticleView.css';
+import languages from '../../constants/languages';
+import getNextId from '../../helpers/GetNextId';
+import getPreviousId from '../../helpers/GetPreviousId';
+import './ArticlePage.css';
 
-const ArticleView = ({ match }) => {
+const ArticlePage = ({ match }) => {
     const [key, setKey] = useState(languages[0]);
     const [currentArticle, setArticle] = useState({ id: "0" });
     const history = useHistory();
@@ -68,4 +68,4 @@ const ArticleView = ({ match }) => {
     </section>
 };
 
-export default ArticleView;
+export default ArticlePage;

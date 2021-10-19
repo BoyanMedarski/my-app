@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 import { Tabs, Tab, Container } from 'react-bootstrap';
-import ArticleForm from '../ArticleForm/ArticleForm';
+import ArticleForm from './ArticleForm/ArticleForm';
 import capitilize from '../../helpers/CapitalizeFirstLetter';
 import generateId from '../../helpers/GenerateId';
 import languages from "../../constants/languages";
 
-const EditArticle = ({ match }) => {
+const EditArticlePage = ({ match }) => {
     const [key, setKey] = useState(languages[0]);
     const [article, setArticle] = useState({ title: "", content: "", date: "" });
     const history = useHistory();
@@ -56,4 +56,4 @@ const EditArticle = ({ match }) => {
     </>
 };
 
-export default EditArticle;
+export default EditArticlePage;

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ListGroup, Dropdown, ButtonGroup, DropdownButton } from 'react-bootstrap';
-import ArticleListRow from '../ArticleListRow/ArticleListRow';
+import ArticleListRow from './ArticleListRow/ArticleListRow';
 import capitilize from '../../helpers/CapitalizeFirstLetter';
-import languages from './../../constants/languages';
-import './ArticleList.css';
+import languages from '../../constants/languages';
+import './ArticleListPage.css';
 
-const ArticleList = ({ match, articles }) => {
+const ArticleListPage = ({ match, articles }) => {
     const [articlesList, setArticles] = useState(articles);
     const [locale, setLocale] = useState("");
     const history = useHistory();
@@ -55,4 +55,4 @@ const ArticleList = ({ match, articles }) => {
     )
 };
 
-export default ArticleList;
+export default ArticleListPage;

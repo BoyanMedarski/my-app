@@ -1,4 +1,4 @@
-import dateFormater from '../../helpers/DateFormater';
+import dateFormater from '../../../helpers/DateFormater';
 import './ArticleBody.css';
 
 const ArticleBody = ({ article, locale, onNextClick, onPreviousClick }) => {
