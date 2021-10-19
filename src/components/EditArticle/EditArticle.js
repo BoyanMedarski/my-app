@@ -19,7 +19,7 @@ const EditArticle = ({ match }) => {
 
     const onArticleSubmit = article => {
         let articles = JSON.parse(localStorage.getItem("articles"));
-        let newId = generateId();
+        let newId = generateId().toString();
 
         if (article.id) {
             let filteredArticles = articles.filter(ar => ar.id !== article.id);

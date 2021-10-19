@@ -12,17 +12,16 @@ const ArticleList = ({ match }) => {
     const history = useHistory();
 
     useEffect(() => {
-        let locale = `${match.params.locale} articles`;
-        var articles = JSON.parse(localStorage.getItem(locale));
+        let articles = JSON.parse(localStorage.getItem("articles")).filter(ar => !ar.isDeleted && ar.isActive);
         setArticles(articles);
-        setLocale(locale);
+        setLocale(match.params.locale);
     }, [match.params.locale]);
 
     const onArticleClick = id => {
-        history.push(`/${match.params.locale}/articles/${id}/`);
+        history.push(`/${locale}/articles/${id}/`);
     };
 
-    const onDropDownClick = language =>{
+    const onDropDownClick = language => {
         history.push(`/${language}/articles/`);
     };
 
@@ -31,11 +30,11 @@ const ArticleList = ({ match }) => {
             <div className="language-bar">Lang:
                 <DropdownButton
                     as={ButtonGroup}
-                    key={match.params.locale}
+                    key={locale}
                     id={`dropdown-button-drop`}
                     size="sm"
                     variant=""
-                    title={capitilize(match.params.locale)}
+                    title={capitilize(locale)}
                     onSelect={onDropDownClick}
                 >
                     {languages.map(lang => {
@@ -45,7 +44,7 @@ const ArticleList = ({ match }) => {
             </div>
             <div className="articles-header">Articles listing</div>
             <ListGroup>
-                {articles.map(ar => <ArticleListRow article={ar} key={ar.id} onArticleClick={onArticleClick} />)}
+                {articles.map(ar => <ArticleListRow article={ar} key={ar.id} onArticleClick={onArticleClick} locale={locale} />)}
             </ListGroup>
         </>
     )

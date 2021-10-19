@@ -10,10 +10,9 @@ const ArticleForm = ({ language, article, onArticleSubmit }) => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [date, setDate] = useState("");
-    const [isActive, setIsActive] = useState("");
+    const [isActive, setIsActive] = useState(false);
 
     useEffect(() => {
-        console.log(article)
         if (article) {
             setTitle(article.title[language]);
             setContent(article.content[language]);
@@ -46,7 +45,24 @@ const ArticleForm = ({ language, article, onArticleSubmit }) => {
             SetRеquiredText(true);
         }
         else {
-            onArticleSubmit({ id: id, title: title, content: content, date: date, isActive: !!isActive });
+            let updatedTitle = {};
+            let updatedContent = {};
+            let editedArticle = {};
+
+            if (article) {
+                updatedTitle = { ...article.title }
+                updatedContent = { ...article.content }
+                updatedTitle[language] = title;
+                updatedContent[language] = content;
+                editedArticle = { ...article, title: updatedTitle, content: updatedContent, date: date, isActive: isActive }
+            } else{
+                updatedTitle = { english: "", german: "", bulgarian: "" }
+                updatedContent = { english: "", german: "", bulgarian: "" }
+                updatedTitle[language] = title;
+                updatedContent[language] = content;
+                editedArticle = { id: id, title: updatedTitle, content: updatedContent, date: date, isActive: !!isActive, slug: "article" + id };
+            }
+            onArticleSubmit(editedArticle);
         }
     };
 

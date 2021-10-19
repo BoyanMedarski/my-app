@@ -19,11 +19,11 @@ function App() {
     <div className="App">
       <Router>
         <Route exact path="/" component={Home}></Route>
-        <Route exact path="/:locale/articles" component={ArticleList}></Route>
-        <Route exact path="/:locale/articles/:id" component={ArticleView}></Route>
-        <Route exact path="/admin/:locale/articles" component={ArticleListBackend}></Route>
-        <Route exact path="/admin/:locale/articles/edit/:id" component={EditArticle}></Route>
-        <Route exact path="/admin/:locale/articles/add" component={EditArticle}></Route>
+        <Route exact path="/:locale/articles" render={(props) => <ArticleList articles={articles} {...props} />} />
+        <Route exact path="/:locale/articles/:id" render={(props) => <ArticleView {...props}/>} />
+        <Route exact path="/admin/:locale/articles" render={(props) => <ArticleListBackend articles={articles} {...props} />} />
+        <Route exact path="/admin/:locale/articles/edit/:id" render={(props) => <EditArticle {...props}/>} />
+        <Route exact path="/admin/:locale/articles/add" render={(props) => <EditArticle {...props}/>} />
       </Router>
     </div>
   );
