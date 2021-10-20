@@ -16,10 +16,17 @@ const ArticlePage = ({ match }) => {
     useEffect(() => {
         setKey(match.params.locale);
         let article = JSON.parse(localStorage.getItem("articles")).find(ar => ar.id === match.params.id);
-        if (article.id !== currentArticle.id) {
-            setArticle(article);
+
+        if (typeof article === 'undefined' || article.isDeleted || !article.isActive) {
+            history.push("/not-found");
+        } else {
+            if (article.id !== currentArticle.id) {
+                setArticle(article);
+            }
         }
-    }, [match.params.locale, match.params.id, currentArticle.id]);
+
+
+    }, [match.params.locale, match.params.id, currentArticle.id, history]);
 
     const onNextClick = (id) => {
         const articles = JSON.parse(localStorage.getItem('articles'));
@@ -63,7 +70,7 @@ const ArticlePage = ({ match }) => {
         </div>
         <p className="articles-header">Articles listing</p>
         <p className="article-details">Article Details</p>
-        <ArticleBody article={currentArticle} locale={match.params.locale} onNextClick={onNextClick} onPreviousClick={onPreviousClick}/>
+        <ArticleBody article={currentArticle} locale={match.params.locale} onNextClick={onNextClick} onPreviousClick={onPreviousClick} />
 
     </section>
 };

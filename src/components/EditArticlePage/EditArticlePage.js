@@ -15,15 +15,19 @@ const EditArticlePage = ({ match }) => {
         setKey(match.params.locale);
 
         if (typeof match.params.id !== 'undefined') {
-            var selectedArticle = JSON.parse(localStorage.getItem("articles")).find(ar => ar.id === match.params.id);
+            let selectedArticle = JSON.parse(localStorage.getItem("articles")).find(ar => ar.id === match.params.id);
+            if (typeof selectedArticle === 'undefined' || selectedArticle.isDeleted) {
+                history.push("/not-found");
+            }
+
             setArticle(selectedArticle);
         }
 
-    }, [match.params.locale, match.params.id]);
+    }, [match.params.locale, match.params.id, history]);
 
     const onArticleSubmit = () => {
         let articles = JSON.parse(localStorage.getItem("articles"));
-        console.log(article)
+
         let editedArticle = { ...article };
         if (editedArticle.id === "" || typeof editedArticle.id === 'undefined') {
             let newId = generateId().toString();
