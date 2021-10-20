@@ -10,8 +10,8 @@ const articles = [
     },
     {
         id: "2",
-        title: { english: "title 2<div>div</div>", german: "title german 2", bulgarian: "title bulgarian 2" },
-        content: { english: "some content english 2 &lt;div&gt;asd&lt;/div&gt;", german: "some content german 2", bulgarian: "some content bulgarian bulgarian 2" },
+        title: { english: "title 2", german: "title german 2", bulgarian: "title bulgarian 2" },
+        content: { english: "some content english 2 <div>asd</div>", german: "some content german 2", bulgarian: "some content bulgarian bulgarian 2" },
         date: "2015-09-19",
         isActive: true,
         isDeleted: false,

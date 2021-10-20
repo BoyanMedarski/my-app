@@ -6,7 +6,7 @@ const ArticleBody = ({ article, locale, onNextClick, onPreviousClick }) => {
         {article.title
             ? <>
                 <p className="article-title">{article.title[locale]}</p>
-                <p className="article-content">{article.content[locale]}</p>
+                <p className="article-content" dangerouslySetInnerHTML={{ __html: article.content[locale] }} />
                 <p className="article-date">{dateFormater(article.date)}</p>
                 <div className="back-row no-select">
                     <hr className="line-header" />
