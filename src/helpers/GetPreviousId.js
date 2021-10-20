@@ -1,5 +1,6 @@
 const getPreviousId = (array, currentId) => {
     const sortedArray = array
+        .filter(ar => !ar.isDeleted && ar.isActive)
         .slice()
         .sort(function (a, b) { return a.id - b.id })
         .map(a => a.id);
