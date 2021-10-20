@@ -13,21 +13,26 @@ const EditArticlePage = ({ match }) => {
 
     useEffect(() => {
         setKey(match.params.locale);
-        var article = JSON.parse(localStorage.getItem("articles")).find(ar => ar.id === match.params.id);
-        setArticle(article);
+
+        if (typeof match.params.id !== 'undefined') {
+            var selectedArticle = JSON.parse(localStorage.getItem("articles")).find(ar => ar.id === match.params.id);
+            setArticle(selectedArticle);
+        }
+
     }, [match.params.locale, match.params.id]);
 
-    const onArticleSubmit = article => {
+    const onArticleSubmit = () => {
         let articles = JSON.parse(localStorage.getItem("articles"));
-        let newId = generateId().toString();
-
-        if (article.id) {
-            let filteredArticles = articles.filter(ar => ar.id !== article.id);
-            filteredArticles.push(article);
+        console.log(article)
+        let editedArticle = { ...article };
+        if (editedArticle.id === "" || typeof editedArticle.id === 'undefined') {
+            let newId = generateId().toString();
+            editedArticle = { ...editedArticle, id: newId, isDeleted: false, slug: "article-" + newId }
+            articles.push(editedArticle);
+        } else {
+            let filteredArticles = articles.filter(ar => ar.id !== editedArticle.id);
+            filteredArticles.push(editedArticle);
             articles = filteredArticles;
-        }
-        else {
-            articles.push({ ...article, id: newId, slug: "article-" + newId });
         }
 
         localStorage.setItem("articles", JSON.stringify(articles));
@@ -48,7 +53,7 @@ const EditArticlePage = ({ match }) => {
                         title={capitilize(lang)}
                         key={lang}
                     >
-                        <ArticleForm language={lang} article={article} onArticleSubmit={onArticleSubmit} />
+                        <ArticleForm language={lang} article={article} onArticleSubmit={onArticleSubmit} setArticle={setArticle} />
                     </Tab>
                 )}
             </Tabs>
